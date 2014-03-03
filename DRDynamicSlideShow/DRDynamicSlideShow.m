@@ -176,19 +176,32 @@ typedef NS_ENUM(NSUInteger, DRDynamicSlideShowAnimationValueType) {
 
 - (id)init {
     if (self = [super init]) {
-        animations = [NSMutableArray new];
-        tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollToNextPage)];
-        [self addGestureRecognizer:tapGestureRecognizer];
-        
-        [self setDelegate:self];
-        [self setPagingEnabled:YES];
-        [self setShowsHorizontalScrollIndicator:NO];
-        [self setShowsVerticalScrollIndicator:NO];
-        
-        [self setScrollsPageOnTap:YES];
+        [self setup];
     }
     
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setup];
+    }
+    
+    return self;
+}
+
+-(void)setup
+{
+    animations = [NSMutableArray new];
+    tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollToNextPage)];
+    [self addGestureRecognizer:tapGestureRecognizer];
+    
+    [self setDelegate:self];
+    [self setPagingEnabled:YES];
+    [self setShowsHorizontalScrollIndicator:NO];
+    [self setShowsVerticalScrollIndicator:NO];
+    
+    [self setScrollsPageOnTap:YES];
 }
 
 - (void)scrollToNextPage {
