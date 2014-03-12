@@ -37,7 +37,7 @@
 
 - (void)addAnimation:(DRDynamicSlideShowAnimation *)animation;
 - (void)addSubview:(UIView *)subview onPage:(NSInteger)page;
-- (NSInteger)curPage;
+- (NSInteger)currentPage;
 
 // @property (nonatomic) DRDynamicSlideShowDirection direction;
 // - (id)initWithOrientation:(DRDynamicSlideShowDirection)direction;
