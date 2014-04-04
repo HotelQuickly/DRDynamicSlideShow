@@ -271,13 +271,16 @@ typedef NS_ENUM(NSUInteger, DRDynamicSlideShowAnimationValueType) {
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger page = [self currentPage];
-    NSLog(@"Page %d",page);
+    
     if (currentPage != page) {
         [self performCurrentAnimationsWithPercentage:(currentPage < page ? 1 : 0)];
         currentPage = page;
         [self resetCurrentAnimations];
         if (self.didReachPageBlock) self.didReachPageBlock(page);
         
+        if(self.delegate != nil){
+            [self.delegate DRDynamicSlideShow:self onChangePage:currentPage];
+        }
     }
     
     CGFloat horizontalScroll = self.contentOffset.x-self.frame.size.width*currentPage;
@@ -292,9 +295,5 @@ typedef NS_ENUM(NSUInteger, DRDynamicSlideShowAnimationValueType) {
     }
 }
 
--(NSInteger)curPage
-{
-    return currentPage;
-}
 
 @end
