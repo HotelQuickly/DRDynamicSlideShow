@@ -182,6 +182,15 @@ typedef NS_ENUM(NSUInteger, DRDynamicSlideShowAnimationValueType) {
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        [self setup];
+    }
+    
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         [self setup];
@@ -271,15 +280,15 @@ typedef NS_ENUM(NSUInteger, DRDynamicSlideShowAnimationValueType) {
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger page = [self currentPage];
-    NSLog(@"Page %d",page);
+    
     if (currentPage != page) {
         [self performCurrentAnimationsWithPercentage:(currentPage < page ? 1 : 0)];
         currentPage = page;
         [self resetCurrentAnimations];
         if (self.didReachPageBlock) self.didReachPageBlock(page);
         
-        if(self.delegate != nil){
-            [self.delegate DRDynamicSlideShow:self onChangePage:currentPage];
+        if(self.xDelegate != nil){
+            [self.xDelegate DRDynamicSlideShow:self onChangePage:currentPage];
         }
     }
     
