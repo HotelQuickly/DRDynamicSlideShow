@@ -292,5 +292,9 @@ typedef NS_ENUM(NSUInteger, DRDynamicSlideShowAnimationValueType) {
     }
 }
 
+-(NSInteger)curPage
+{
+    return currentPage;
+}
 
 @end
