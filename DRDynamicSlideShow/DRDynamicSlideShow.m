@@ -279,7 +279,7 @@ typedef NS_ENUM(NSUInteger, DRDynamicSlideShowAnimationValueType) {
         if (self.didReachPageBlock) self.didReachPageBlock(page);
         
         if(self.delegate != nil){
-            [self.dynamicScrollviewDelegate DRDynamicSlideShow:self onChangePage:currentPage];
+            [self.delegate DRDynamicSlideShow:self onChangePage:currentPage];
         }
     }
     
