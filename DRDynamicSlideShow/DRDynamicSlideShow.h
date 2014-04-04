@@ -50,6 +50,6 @@
 @protocol DRDynamicSlideShowDelegate
 @required
 
-- (void)DRDynamicSlideShow:(DRDynamicSlideShow *)slideShow onChangePage:(int)page;
+- (void)DRDynamicSlideShow:(DRDynamicSlideShow *)slideShow onChangePage:(long)page;
 
 @end
