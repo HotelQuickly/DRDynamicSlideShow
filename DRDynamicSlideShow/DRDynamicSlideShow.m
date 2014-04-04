@@ -278,9 +278,6 @@ typedef NS_ENUM(NSUInteger, DRDynamicSlideShowAnimationValueType) {
         [self resetCurrentAnimations];
         if (self.didReachPageBlock) self.didReachPageBlock(page);
         
-        if(self.delegate != nil){
-            [self.delegate DRDynamicSlideShow:self onChangePage:currentPage];
-        }
     }
     
     CGFloat horizontalScroll = self.contentOffset.x-self.frame.size.width*currentPage;
